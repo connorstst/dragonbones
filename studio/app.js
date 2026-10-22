@@ -56,7 +56,7 @@ function poseAt(anim, f) {
   const a = keys[rightIndex - 1], b = keys[rightIndex];
   const t = (f - a.frame) / (b.frame - a.frame);
   const ease = t * t * (3 - 2 * t);
-  return Object.fromEntries(['x', 'y', 'scale', 'rotation', 'capeAngle', 'capeShiftX', 'alpha'].map(k => [k, (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) + ((b[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) - (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0))) * ease]));
+  return Object.fromEntries(['x', 'y', 'scale', 'rotation', 'alpha'].map(k => [k, (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) + ((b[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) - (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0))) * ease]));
 }
 
 function draw() {
@@ -65,35 +65,16 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.save(); ctx.scale(canvas.width / w, canvas.height / h);
   const p = poseAt(currentAnimation(), frame);
-  ctx.translate(w / 2 + p.x, h * .68 + p.y);
+  ctx.translate(w / 2 + p.x, h * .75 + p.y);
   ctx.rotate((p.rotation || 0) * Math.PI / 180);
   ctx.scale(p.scale || 1, p.scale || 1); ctx.globalAlpha = p.alpha ?? 1;
   if (assetImage) {
     const factor = Math.min(230 / assetImage.width, 250 / assetImage.height);
     const iw = assetImage.width * factor, ih = assetImage.height * factor;
     ctx.drawImage(assetImage, -iw / 2, -ih, iw, ih);
-    if (project.rig?.capeMask) drawFlappingCape(p, factor, iw, ih);
   } else drawPlaceholder();
   ctx.restore();
   if (showRig && project.rig) drawRig();
-}
-
-function drawFlappingCape(pose, factor, iw, ih) {
-  const points = project.rig.capeMask;
-  const pivot = project.rig.capePivot;
-  const path = () => {
-    ctx.beginPath();
-    points.forEach(([x, y], index) => {
-      const px = -iw / 2 + x * factor, py = -ih + y * factor;
-      index === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-    });
-    ctx.closePath();
-  };
-  // Remove the lower robe from the flat source, then repaint that complete region as one moving panel.
-  ctx.save(); ctx.globalCompositeOperation = 'destination-out'; path(); ctx.fill(); ctx.restore();
-  const pivotX = -iw / 2 + pivot.x * factor, pivotY = -ih + pivot.y * factor;
-  ctx.save(); ctx.translate(pose.capeShiftX || 0, 0); ctx.translate(pivotX, pivotY); ctx.rotate((pose.capeAngle || 0) * Math.PI / 180); ctx.translate(-pivotX, -pivotY);
-  path(); ctx.clip(); ctx.drawImage(assetImage, -iw / 2, -ih, iw, ih); ctx.restore();
 }
 
 function drawRig() {
