@@ -56,7 +56,7 @@ function poseAt(anim, f) {
   const a = keys[rightIndex - 1], b = keys[rightIndex];
   const t = (f - a.frame) / (b.frame - a.frame);
   const ease = t * t * (3 - 2 * t);
-  return Object.fromEntries(['x', 'y', 'scale', 'rotation', 'capeAngle', 'alpha'].map(k => [k, (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) + ((b[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) - (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0))) * ease]));
+  return Object.fromEntries(['x', 'y', 'scale', 'rotation', 'capeAngle', 'capeShiftX', 'alpha'].map(k => [k, (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) + ((b[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) - (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0))) * ease]));
 }
 
 function draw() {
@@ -89,10 +89,10 @@ function drawFlappingCape(pose, factor, iw, ih) {
     });
     ctx.closePath();
   };
-  // Remove the selected hem from the flat base image, then repaint those exact source pixels as a separate moving cutout.
+  // Remove the lower robe from the flat source, then repaint that complete region as one moving panel.
   ctx.save(); ctx.globalCompositeOperation = 'destination-out'; path(); ctx.fill(); ctx.restore();
   const pivotX = -iw / 2 + pivot.x * factor, pivotY = -ih + pivot.y * factor;
-  ctx.save(); ctx.translate(pivotX, pivotY); ctx.rotate((pose.capeAngle || 0) * Math.PI / 180); ctx.translate(-pivotX, -pivotY);
+  ctx.save(); ctx.translate(pose.capeShiftX || 0, 0); ctx.translate(pivotX, pivotY); ctx.rotate((pose.capeAngle || 0) * Math.PI / 180); ctx.translate(-pivotX, -pivotY);
   path(); ctx.clip(); ctx.drawImage(assetImage, -iw / 2, -ih, iw, ih); ctx.restore();
 }
 
