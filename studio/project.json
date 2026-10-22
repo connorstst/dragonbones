@@ -28,31 +28,31 @@
       { "name": "crystal_fx", "parent": "staff", "x": 10, "y": -55, "purpose": "Kristallglühen" }
     ],
     "binding": "single_flat_image",
-    "capeMask": [[225,327],[207,341],[187,355],[167,369],[144,380],[126,397],[111,411],[99,425],[93,442],[104,452],[120,449],[134,438],[148,435],[158,447],[173,448],[186,441],[199,430],[212,416],[227,402],[240,385],[252,366],[268,348],[248,333]],
-    "capePivot": { "x": 220, "y": 350 },
+    "capeMask": [[232,344],[219,355],[207,369],[194,384],[180,398],[164,408],[149,410],[137,403],[127,391],[119,377],[114,366],[104,365],[95,371],[89,382],[87,396],[91,411],[100,424],[113,434],[129,440],[146,439],[162,433],[178,427],[192,427],[204,434],[211,446],[215,459],[221,470],[231,475],[242,471],[254,461],[265,447],[272,431],[270,414],[263,396],[255,378],[247,360]],
+    "capePivot": { "x": 210, "y": 415 },
     "note": "Die Vorlage ist ein einzelnes abgeflachtes PNG. Bones sind als Rig-Plan angelegt; unabhängige Kopf-, Arm-, Mantel- und Stabbewegung braucht segmentierte PNG-Layer oder ein deformierbares Mesh."
   },
   "animations": {
     "idle": {
       "loop": true,
-      "duration": 60,
+      "duration": 180,
       "keys": [
-        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -12, "alpha": 1 },
-        { "frame": 15, "x": 0, "y": -2, "scale": 1.01, "rotation": -0.6, "capeAngle": 14, "alpha": 1 },
-        { "frame": 30, "x": 0, "y": -5, "scale": 1.025, "rotation": 0, "capeAngle": -12, "alpha": 1 },
-        { "frame": 45, "x": 0, "y": -2, "scale": 1.01, "rotation": 0.6, "capeAngle": 14, "alpha": 1 },
-        { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -12, "alpha": 1 }
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -4, "alpha": 1 },
+        { "frame": 45, "x": 0, "y": -1, "scale": 1.005, "rotation": -0.2, "capeAngle": 0, "alpha": 1 },
+        { "frame": 90, "x": 0, "y": -2, "scale": 1.01, "rotation": 0, "capeAngle": 4, "alpha": 1 },
+        { "frame": 135, "x": 0, "y": -1, "scale": 1.005, "rotation": 0.2, "capeAngle": 0, "alpha": 1 },
+        { "frame": 180, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -4, "alpha": 1 }
       ]
     },
     "win": {
       "loop": false,
-      "duration": 36,
+      "duration": 60,
       "keys": [
-        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -10, "alpha": 1 },
-        { "frame": 8, "x": 0, "y": -18, "scale": 1.16, "rotation": -7, "capeAngle": -28, "alpha": 1 },
-        { "frame": 18, "x": 0, "y": 8, "scale": 0.94, "rotation": 5, "capeAngle": 30, "alpha": 1 },
-        { "frame": 27, "x": 0, "y": -4, "scale": 1.07, "rotation": -2, "capeAngle": -20, "alpha": 1 },
-        { "frame": 36, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -10, "alpha": 1 }
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -4, "alpha": 1 },
+        { "frame": 14, "x": 0, "y": -12, "scale": 1.12, "rotation": -5, "capeAngle": -11, "alpha": 1 },
+        { "frame": 30, "x": 0, "y": 6, "scale": 0.97, "rotation": 3, "capeAngle": 12, "alpha": 1 },
+        { "frame": 45, "x": 0, "y": -3, "scale": 1.04, "rotation": -1, "capeAngle": -7, "alpha": 1 },
+        { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "capeAngle": -4, "alpha": 1 }
       ]
     },
     "anticipation": {

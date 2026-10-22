@@ -130,6 +130,7 @@ function updateTimeline() {
   const anim = currentAnimation();
   $('#animName').textContent = $('#animation').value;
   $('#scrub').max = anim.duration; $('#scrub').value = Math.min(frame, anim.duration);
+  $('#timelineTicks').innerHTML = Array.from({ length: 7 }, (_, index) => `<span>${Math.round(anim.duration * index / 6)}</span>`).join('');
   $('#frameReadout').textContent = `Frame ${Math.round(frame)} / ${anim.duration}`;
   $('#keySummary').value = JSON.stringify(anim.keys, null, 2);
 }
