@@ -1,9 +1,64 @@
 {
-  "name": "slot-symbol-studio",
+  "name": "witch-slot-rig",
   "canvas": { "width": 320, "height": 320, "fps": 30 },
-  "asset": { "id": "first_symbol", "label": "Mein erstes Symbol", "image": "", "pivot": "bottom-center" },
+  "asset": {
+    "id": "witch",
+    "label": "Die Hexe",
+    "image": "inbox/hf_20260822_152621_da1de003-ca19-4482-9222-2407e462ee9f-removebg-preview.png",
+    "pivot": "bottom-center"
+  },
+  "rig": {
+    "armature": "witch_armature",
+    "root": "root",
+    "bones": [
+      { "name": "root", "parent": null, "x": 160, "y": 210, "purpose": "Standpivot; bewegt die ganze Hexe" },
+      { "name": "body", "parent": "root", "x": 0, "y": -48, "purpose": "Rumpf und Mantel" },
+      { "name": "chest", "parent": "body", "x": 0, "y": -32, "purpose": "Schulter-/Brustbereich" },
+      { "name": "neck", "parent": "chest", "x": 0, "y": -22, "purpose": "Kopfansatz" },
+      { "name": "head", "parent": "neck", "x": -3, "y": -26, "purpose": "Gesicht und Haare" },
+      { "name": "hat", "parent": "head", "x": 0, "y": -42, "purpose": "Hutspitze und Krempe" },
+      { "name": "arm_staff_upper", "parent": "chest", "x": 23, "y": 2, "purpose": "Oberarm zur Stabhand" },
+      { "name": "arm_staff_lower", "parent": "arm_staff_upper", "x": 12, "y": 20, "purpose": "Unterarm und Hand am Stab" },
+      { "name": "staff", "parent": "arm_staff_lower", "x": 7, "y": 4, "purpose": "Zauberstab; Griffpivot" },
+      { "name": "arm_free", "parent": "chest", "x": -23, "y": 8, "purpose": "Freier Arm" },
+      { "name": "cloak", "parent": "body", "x": -3, "y": 28, "purpose": "Mantelsaum" },
+      { "name": "crystal_fx", "parent": "staff", "x": 10, "y": -55, "purpose": "Kristallglühen" }
+    ],
+    "binding": "single_flat_image",
+    "note": "Die Vorlage ist ein einzelnes abgeflachtes PNG. Bones sind als Rig-Plan angelegt; unabhängige Kopf-, Arm-, Mantel- und Stabbewegung braucht segmentierte PNG-Layer oder ein deformierbares Mesh."
+  },
   "animations": {
-    "idle": { "loop": true, "duration": 60, "keys": [{ "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }, { "frame": 30, "x": 0, "y": -4, "scale": 1.025, "rotation": 0, "alpha": 1 }, { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }] },
-    "win": { "loop": false, "duration": 36, "keys": [{ "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }, { "frame": 8, "x": 0, "y": -18, "scale": 1.16, "rotation": -7, "alpha": 1 }, { "frame": 18, "x": 0, "y": 8, "scale": 0.94, "rotation": 5, "alpha": 1 }, { "frame": 27, "x": 0, "y": -4, "scale": 1.07, "rotation": -2, "alpha": 1 }, { "frame": 36, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }] }
+    "idle": {
+      "loop": true,
+      "duration": 60,
+      "keys": [
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 },
+        { "frame": 15, "x": 0, "y": -2, "scale": 1.01, "rotation": -0.6, "alpha": 1 },
+        { "frame": 30, "x": 0, "y": -5, "scale": 1.025, "rotation": 0, "alpha": 1 },
+        { "frame": 45, "x": 0, "y": -2, "scale": 1.01, "rotation": 0.6, "alpha": 1 },
+        { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }
+      ]
+    },
+    "win": {
+      "loop": false,
+      "duration": 36,
+      "keys": [
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 },
+        { "frame": 8, "x": 0, "y": -18, "scale": 1.16, "rotation": -7, "alpha": 1 },
+        { "frame": 18, "x": 0, "y": 8, "scale": 0.94, "rotation": 5, "alpha": 1 },
+        { "frame": 27, "x": 0, "y": -4, "scale": 1.07, "rotation": -2, "alpha": 1 },
+        { "frame": 36, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }
+      ]
+    },
+    "anticipation": {
+      "loop": false,
+      "duration": 24,
+      "keys": [
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 },
+        { "frame": 8, "x": 0, "y": 4, "scale": 0.96, "rotation": 0, "alpha": 1 },
+        { "frame": 16, "x": 0, "y": -7, "scale": 1.04, "rotation": -2, "alpha": 1 },
+        { "frame": 24, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }
+      ]
+    }
   }
 }

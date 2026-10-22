@@ -7,6 +7,7 @@ let frame = 0;
 let playing = true;
 let lastTick = performance.now();
 let dirty = false;
+let showRig = false;
 
 const $ = selector => document.querySelector(selector);
 const markDirty = () => { dirty = true; $('#saveState').textContent = 'Ungespeichert'; $('#saveState').style.color = '#f2bb68'; };
@@ -73,6 +74,24 @@ function draw() {
     ctx.drawImage(assetImage, -iw / 2, -ih, iw, ih);
   } else drawPlaceholder();
   ctx.restore();
+  if (showRig && project.rig) drawRig();
+}
+
+function drawRig() {
+  const byName = Object.fromEntries(project.rig.bones.map(b => [b.name, b]));
+  const points = {};
+  const point = bone => {
+    if (points[bone.name]) return points[bone.name];
+    const parent = bone.parent ? point(byName[bone.parent]) : { x: 0, y: 0 };
+    return points[bone.name] = { x: parent.x + bone.x, y: parent.y + bone.y };
+  };
+  ctx.save(); ctx.scale(canvas.width / project.canvas.width, canvas.height / project.canvas.height); ctx.globalAlpha = .95; ctx.lineWidth = 1.5;
+  for (const bone of project.rig.bones) {
+    const p = point(bone);
+    if (bone.parent) { const parent = point(byName[bone.parent]); ctx.strokeStyle = '#75e6d0'; ctx.beginPath(); ctx.moveTo(parent.x, parent.y); ctx.lineTo(p.x, p.y); ctx.stroke(); }
+    ctx.fillStyle = bone.name === 'root' ? '#ffe66d' : '#f8ffff'; ctx.strokeStyle = '#132224'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(p.x, p.y, bone.name === 'root' ? 4 : 2.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  }
+  ctx.restore();
 }
 
 function drawPlaceholder() {
@@ -110,6 +129,7 @@ function tick(now) {
 }
 
 $('#animation').addEventListener('change', () => { frame = 0; updateTimeline(); draw(); });
+$('#rigToggle').addEventListener('click', () => { showRig = !showRig; $('#rigToggle').textContent = showRig ? 'Bones ausblenden' : 'Bones anzeigen'; draw(); });
 $('#play').addEventListener('click', () => { playing = !playing; $('#play').textContent = playing ? 'Ⅱ' : '▶'; });
 $('#scrub').addEventListener('input', event => { playing = false; $('#play').textContent = '▶'; frame = Number(event.target.value); updateTimeline(); draw(); });
 $('#assetName').addEventListener('input', event => { project.asset.label = event.target.value; $('#assetTitle').textContent = event.target.value; markDirty(); });

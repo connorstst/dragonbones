@@ -43,7 +43,7 @@ Dieses Verzeichnis ist die gemeinsame Produktionsbasis fuer deine Slot-Animation
 
 ## Aktueller Stand
 
-Das lokale Prompt-Studio befindet sich unter `studio/`. Es zeigt die Keyframes aus `studio/project.json` im Browser an; ich kann diese Datei nach deinen Animationsprompts direkt anpassen. DragonBones Pro 5.6.3 wurde nicht installiert, da kein sicherer offizieller Installer verfügbar war.
+Das lokale Prompt-Studio befindet sich unter `studio/`. Es zeigt die Keyframes aus `studio/project.json` im Browser an; ich kann diese Datei nach deinen Animationsprompts direkt anpassen. DragonBones Pro 5.6.3 wurde nicht installiert, da kein sicherer offizieller Installer verfügbar war. Für die Hexe gibt es einen Bone-Guide im Projekt. Das verwendete PNG ist abgeflacht; getrennte Kopf-, Arm-, Mantel- und Stabanimationen benötigen Cutout-Layer oder Mesh-Deformation.
 
 ## GitHub-Ablauf
 

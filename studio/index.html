@@ -8,14 +8,14 @@
   <header><div class="brand"><span class="mark">✦</span><div><strong>Slot Animation Studio</strong><small>DragonBones Prompt Workflow</small></div></div><div class="head-actions"><span id="saveState" class="status">Verbunden</span><button id="reload" class="quiet">Datei neu laden</button><button id="save" class="primary">Speichern</button></div></header>
   <main>
     <section class="stage-panel"><div class="section-head"><div><small>VORSCHAU</small><h1 id="assetTitle">Mein erstes Symbol</h1></div><div class="stage-actions"><select id="animation"></select><button id="play" class="play">▶</button></div></div>
-      <div class="stage-wrap"><canvas id="stage" width="640" height="640"></canvas><div class="stage-hint">PNG hier ablegen oder Asset auswählen</div></div>
+      <div class="stage-wrap"><canvas id="stage" width="640" height="640"></canvas><div class="stage-hint">PNG hier ablegen oder Asset auswählen</div><button id="rigToggle" class="rig-toggle">Bones anzeigen</button></div>
       <div class="timeline"><div class="timeline-head"><span id="animName">idle</span><span id="frameReadout">Frame 0 / 60</span></div><input id="scrub" type="range" min="0" max="60" value="0"><div class="tick-row"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div></div>
       <div class="canvas-foot"><span>320 × 320</span><span>30 FPS</span><span>Transparenter Hintergrund</span></div>
     </section>
     <aside>
       <section class="card"><div class="card-title"><span>01</span><h2>Asset</h2></div><label for="assetName">Name</label><input id="assetName" value="Mein erstes Symbol"><label for="assetFile">Bild-Layer</label><select id="assetFile"><option value="">Vektor-Platzhalter verwenden</option></select><button id="upload" class="wide">PNG/JPG/WEBP hinzufügen</button><input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" hidden><p class="note">Lege Ebenen auch direkt in <code>01_source/</code> ab und lade die Liste neu.</p></section>
       <section class="card"><div class="card-title"><span>02</span><h2>Animation</h2></div><label for="keySummary">Keyframes (JSON)</label><textarea id="keySummary" spellcheck="false"></textarea><p class="note">Ich ändere diese Projektdatei nach deinen Prompts. Speichern schreibt die Vorschau-Datei auf den Rechner.</p></section>
-      <section class="card export-card"><div class="card-title"><span>03</span><h2>Projekt</h2></div><button id="export" class="wide">Projekt-JSON herunterladen</button><p class="note">Vorschau und Projektdatei sind bereit. DragonBones-Runtime-Export ergänzen wir nach dem ersten Asset und dem Zielruntime.</p></section>
+      <section class="card export-card"><div class="card-title"><span>03</span><h2>Rig-Status</h2></div><p class="note">12 Bones sind als Rig-Guide gesetzt. Das aktuelle Hexenbild ist ein einziges PNG, daher bewegen sich Arme, Kopf und Stab noch nicht einzeln. Für echte Gelenkanimation brauchen wir getrennte Layer oder ein Mesh.</p><button id="export" class="wide">Projekt-JSON herunterladen</button><p class="note">Das ist die Studio-Projektdatei. Ein validierter DragonBones-Runtime-Export ist noch nicht eingerichtet.</p></section>
     </aside>
   </main>
   <footer><span>Arbeitsdatei: <code>studio/project.json</code></span><span>Localhost · <code>127.0.0.1:4173</code></span></footer>
