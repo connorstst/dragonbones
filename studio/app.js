@@ -56,7 +56,7 @@ function poseAt(anim, f) {
   const a = keys[rightIndex - 1], b = keys[rightIndex];
   const t = (f - a.frame) / (b.frame - a.frame);
   const ease = t * t * (3 - 2 * t);
-  return Object.fromEntries(['x', 'y', 'scale', 'rotation', 'alpha'].map(k => [k, (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) + ((b[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) - (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0))) * ease]));
+  return Object.fromEntries(['x', 'y', 'scale', 'rotation', 'alpha', 'wind'].map(k => [k, (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) + ((b[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0)) - (a[k] ?? (k === 'scale' || k === 'alpha' ? 1 : 0))) * ease]));
 }
 
 function draw() {
@@ -65,8 +65,12 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.save(); ctx.scale(canvas.width / w, canvas.height / h);
   const p = poseAt(currentAnimation(), frame);
-  ctx.translate(w / 2 + p.x, h * .75 + p.y);
-  ctx.rotate((p.rotation || 0) * Math.PI / 180);
+  const windPhase = frame / (currentAnimation().duration || 180) * Math.PI * 2;
+  const windSway = Math.sin(windPhase + .55) * (p.wind || 0);
+  drawWind(p, false);
+  ctx.save();
+  ctx.translate(w / 2 + p.x + windSway * 2.8, h * .75 + p.y + Math.sin(windPhase * 2) * (p.wind || 0) * .9);
+  ctx.rotate(((p.rotation || 0) + windSway * 1.1) * Math.PI / 180);
   ctx.scale(p.scale || 1, p.scale || 1); ctx.globalAlpha = p.alpha ?? 1;
   if (assetImage) {
     const factor = Math.min(230 / assetImage.width, 250 / assetImage.height);
@@ -74,7 +78,44 @@ function draw() {
     ctx.drawImage(assetImage, -iw / 2, -ih, iw, ih);
   } else drawPlaceholder();
   ctx.restore();
+  drawWind(p, true);
+  ctx.restore();
   if (showRig && project.rig) drawRig();
+}
+
+function drawWind(pose, foreground) {
+  const strength = pose.wind || 0;
+  if (strength < .05) return;
+  const w = project.canvas.width, h = project.canvas.height;
+  const duration = currentAnimation().duration || 180;
+  const phase = frame / duration * Math.PI * 2;
+  ctx.save();
+  ctx.lineCap = 'round';
+  const count = foreground ? 3 : 5;
+  for (let i = 0; i < count; i++) {
+    const travel = (frame * (foreground ? 1.05 : 1.4) + i * 93 + (foreground ? 37 : 0)) % (w + 130);
+    const x = w + 65 - travel;
+    const y = 48 + i * 47 + Math.sin(phase + i * 1.4) * 9;
+    const length = 25 + (i % 3) * 12;
+    ctx.globalAlpha = strength * (foreground ? .16 : .22);
+    ctx.strokeStyle = foreground ? '#d4ffff' : '#87d9e6';
+    ctx.lineWidth = foreground ? 1 : 1.35;
+    ctx.beginPath();
+    ctx.moveTo(x + length, y - 3);
+    ctx.bezierCurveTo(x + length * .55, y - 12, x + length * .35, y + 8, x, y + 1);
+    ctx.stroke();
+  }
+  if (foreground) {
+    for (let i = 0; i < 6; i++) {
+      const travel = (frame * (.55 + i * .035) + i * 61) % (w + 30);
+      const x = w + 15 - travel;
+      const y = 55 + ((i * 37 + Math.sin(phase + i) * 11) % (h - 80));
+      ctx.globalAlpha = strength * .42;
+      ctx.fillStyle = '#c9fff0';
+      ctx.beginPath(); ctx.arc(x, y, 1 + (i % 2) * .45, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  ctx.restore();
 }
 
 function drawRig() {

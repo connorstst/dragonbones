@@ -35,32 +35,34 @@
       "loop": true,
       "duration": 180,
       "keys": [
-        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 },
-        { "frame": 45, "x": 0, "y": -2, "scale": 1.012, "rotation": -0.4, "alpha": 1 },
-        { "frame": 90, "x": 0, "y": -5, "scale": 1.025, "rotation": 0, "alpha": 1 },
-        { "frame": 135, "x": 0, "y": -2, "scale": 1.012, "rotation": 0.4, "alpha": 1 },
-        { "frame": 180, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "wind": 0.25, "alpha": 1 },
+        { "frame": 30, "x": 0, "y": -1, "scale": 1.008, "rotation": -0.3, "wind": 0.4, "alpha": 1 },
+        { "frame": 60, "x": 0, "y": -3, "scale": 1.018, "rotation": -0.8, "wind": 0.95, "alpha": 1 },
+        { "frame": 90, "x": 0, "y": -5, "scale": 1.025, "rotation": 0.1, "wind": 0.5, "alpha": 1 },
+        { "frame": 120, "x": 0, "y": -3, "scale": 1.018, "rotation": 0.8, "wind": 0.85, "alpha": 1 },
+        { "frame": 150, "x": 0, "y": -1, "scale": 1.008, "rotation": 0.3, "wind": 0.35, "alpha": 1 },
+        { "frame": 180, "x": 0, "y": 0, "scale": 1, "rotation": 0, "wind": 0.25, "alpha": 1 }
       ]
     },
     "win": {
       "loop": false,
       "duration": 60,
       "keys": [
-        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 },
-        { "frame": 14, "x": 0, "y": -12, "scale": 1.12, "rotation": -5, "alpha": 1 },
-        { "frame": 30, "x": 0, "y": 6, "scale": 0.97, "rotation": 3, "alpha": 1 },
-        { "frame": 45, "x": 0, "y": -3, "scale": 1.04, "rotation": -1, "alpha": 1 },
-        { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "wind": 0.25, "alpha": 1 },
+        { "frame": 14, "x": 0, "y": -12, "scale": 1.12, "rotation": -5, "wind": 0.8, "alpha": 1 },
+        { "frame": 30, "x": 0, "y": 6, "scale": 0.97, "rotation": 3, "wind": 0.45, "alpha": 1 },
+        { "frame": 45, "x": 0, "y": -3, "scale": 1.04, "rotation": -1, "wind": 0.75, "alpha": 1 },
+        { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "wind": 0.25, "alpha": 1 }
       ]
     },
     "anticipation": {
       "loop": false,
       "duration": 24,
       "keys": [
-        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 },
-        { "frame": 8, "x": 0, "y": 4, "scale": 0.96, "rotation": 0, "alpha": 1 },
-        { "frame": 16, "x": 0, "y": -7, "scale": 1.04, "rotation": -2, "alpha": 1 },
-        { "frame": 24, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }
+        { "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "wind": 0.25, "alpha": 1 },
+        { "frame": 8, "x": 0, "y": 4, "scale": 0.96, "rotation": 0, "wind": 0.5, "alpha": 1 },
+        { "frame": 16, "x": 0, "y": -7, "scale": 1.04, "rotation": -2, "wind": 0.8, "alpha": 1 },
+        { "frame": 24, "x": 0, "y": 0, "scale": 1, "rotation": 0, "wind": 0.25, "alpha": 1 }
       ]
     }
   }
