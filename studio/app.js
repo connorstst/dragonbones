@@ -64,7 +64,7 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.save(); ctx.scale(canvas.width / w, canvas.height / h);
   const p = poseAt(currentAnimation(), frame);
-  ctx.translate(w / 2 + p.x, h * .76 + p.y);
+  ctx.translate(w / 2 + p.x, h * .68 + p.y);
   ctx.rotate((p.rotation || 0) * Math.PI / 180);
   ctx.scale(p.scale || 1, p.scale || 1); ctx.globalAlpha = p.alpha ?? 1;
   if (assetImage) {
