@@ -1,0 +1,9 @@
+{
+  "name": "slot-symbol-studio",
+  "canvas": { "width": 320, "height": 320, "fps": 30 },
+  "asset": { "id": "first_symbol", "label": "Mein erstes Symbol", "image": "", "pivot": "bottom-center" },
+  "animations": {
+    "idle": { "loop": true, "duration": 60, "keys": [{ "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }, { "frame": 30, "x": 0, "y": -4, "scale": 1.025, "rotation": 0, "alpha": 1 }, { "frame": 60, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }] },
+    "win": { "loop": false, "duration": 36, "keys": [{ "frame": 0, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }, { "frame": 8, "x": 0, "y": -18, "scale": 1.16, "rotation": -7, "alpha": 1 }, { "frame": 18, "x": 0, "y": 8, "scale": 0.94, "rotation": 5, "alpha": 1 }, { "frame": 27, "x": 0, "y": -4, "scale": 1.07, "rotation": -2, "alpha": 1 }, { "frame": 36, "x": 0, "y": 0, "scale": 1, "rotation": 0, "alpha": 1 }] }
+  }
+}

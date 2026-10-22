@@ -43,8 +43,12 @@ Dieses Verzeichnis ist die gemeinsame Produktionsbasis fuer deine Slot-Animation
 
 ## Aktueller Stand
 
-Projektgeruest angelegt. DragonBones Pro selbst muss noch installiert und gegen das Zielruntime getestet werden.
+Das lokale Prompt-Studio befindet sich unter `studio/`. Es zeigt die Keyframes aus `studio/project.json` im Browser an; ich kann diese Datei nach deinen Animationsprompts direkt anpassen. DragonBones Pro 5.6.3 wurde nicht installiert, da kein sicherer offizieller Installer verfügbar war.
 
 ## GitHub-Ablauf
 
 Das Projektverzeichnis ist für Git vorgesehen: Quelldateien, `.dbproj`, Exporte, Briefings und freigegebene Vorschauen werden versioniert. Große Zwischenstände und Cache-Dateien bleiben draußen. LoongBones ist der aktuelle DragonBones-kompatible Online-Editor; seine Bedienungsanleitung liegt im offiziellen DragonBones-GitHub unter `DragonBones/Loongbones-doc`. Die Editor-Webseite ist `https://www.loongbones.app/`. Nach dem Bearbeiten exportierst du das Projekt/JSON und Atlas, speicherst die Dateien hier und committest sie in dein GitHub-Repository.
+
+## Lokales Prompt-Studio
+
+Voraussetzung: Node.js. Starte `studio/start.bat` und öffne `http://127.0.0.1:4173`. Die Vorschau liest `studio/project.json`, erlaubt PNG/JPG/WEBP-Layer aus `01_source/`, Scrubbing und Speichern. Gib mir im Chat einen Animationswunsch; ich ändere die Projekt-Keyframes und du lädst die Seite neu. Das Studio ist eine lokale Prompt-Vorschau; die freigegebene DragonBones-Runtime-Ausgabe wird aus dem Projekt gebaut, sobald Art-Layer und Zielengine feststehen.
