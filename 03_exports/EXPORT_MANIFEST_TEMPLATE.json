@@ -1,0 +1,14 @@
+{
+  "assetId": "replace_me",
+  "version": "v001",
+  "format": "dragonbones-json",
+  "fps": 30,
+  "animations": ["idle", "win"],
+  "files": {
+    "skeleton": "replace_me_ske.json",
+    "atlas": "replace_me_tex.json",
+    "texture": "replace_me_tex.png"
+  },
+  "targetRuntime": "pending",
+  "notes": "Update version whenever skeleton, atlas, or bounds change."
+}

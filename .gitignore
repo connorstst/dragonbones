@@ -1,0 +1,8 @@
+# Temporäre Editor-/Browserdaten
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# Lokale Preview-Caches; freigegebene Vorschauen dürfen in 04_previews liegen.
+04_previews/_cache/
